@@ -2,11 +2,16 @@ import Tabs from "@/components/molecul/Tabs/Tabs";
 import MektepFooter from "@/components/organ/MektepFooter";
 import MektepHeader from "@/components/organ/MektepHeader";
 import MektepT1 from "@/components/organ/MektepT/MektepT1";
+import MektepT2 from "@/components/organ/MektepT/MektepT2";
+import MektepT3 from "@/components/organ/MektepT/MektepT3";
 import MainLayouts from "@/layouts/MainLayouts";
 
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 
 const MektepPage = () => {
+    const router = useRouter()
+
   return (
     <MainLayouts>
       <div className="menu_title">Мектеп туралы</div>
@@ -15,14 +20,18 @@ const MektepPage = () => {
         <Tabs link="mektep" tabs={tabs} />
       </TabsFlex>
 
-      {/* <MektopBlock>
+      {router.asPath.split('/').at(-1) === "1" && <MektopBlock>
         <MektepHeader />
         <MektepFooter />
-      </MektopBlock> */}
+      </MektopBlock>}
 
-      <MektopBlock>
+      {router.asPath.split('/').at(-1) === "2" && <MektopBlock>
         <MektepT1 />
-      </MektopBlock>
+      </MektopBlock>}
+
+      {router.asPath.split('/').at(-1) === "3" && <MektepT2 />}
+      
+      {router.asPath.split('/').at(-1) === "4" && <MektepT3 />}
     </MainLayouts>
   );
 };

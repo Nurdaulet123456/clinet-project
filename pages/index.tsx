@@ -8,8 +8,11 @@ import {
   SchoolIcons,
 } from "@/components/atoms/Icons";
 import Sidebar from "@/components/organ/Sidebar";
+import { useRouter } from "next/router";
 
 const MainPage = () => {
+  const router = useRouter();
+
   return (
     <>
       <div className="container">
@@ -17,7 +20,7 @@ const MainPage = () => {
 
         <div className="main">
           <div className="main_inner">
-            <div className="main_inner-header">
+            <div className="main_inner-header" style={{ height: "auto" }}>
               <div className="main_inner-block">17:30</div>
               <div className="main_inner-block" style={{ textAlign: "center" }}>
                 Понедельник <br />
@@ -50,7 +53,7 @@ const MainPage = () => {
                 <GordSchoolIcons />
                 Гордость школы
               </div>
-              <div>
+              <div onClick={() => router.push("/menu")}>
                 <MenuIcons />
                 Меню
               </div>

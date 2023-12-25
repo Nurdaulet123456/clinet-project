@@ -60,7 +60,7 @@ const sidebar: IType[] = [
   {
     id: 4,
     type: "Үйірме",
-    link: "prideschool/1",
+    link: "school/1",
     src: '/icons/s4'
   },
 
@@ -74,21 +74,21 @@ const sidebar: IType[] = [
   {
     id: 6,
     type: "Мектеп мақтаныштары",
-    link: "news",
+    link: "prides",
     src: '/icons/s6'
   },
 
   {
     id: 7,
     type: "Жаңалықтар",
-    link: "cabinet",
+    link: "news",
     src: '/icons/s7'
   },
 
   {
     id: 8,
     type: "Мектеп картасы",
-    link: "menu",
+    link: "map",
     src: '/icons/s8'
   }
 ];

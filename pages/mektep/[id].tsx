@@ -15,19 +15,19 @@ const MektepPage = () => {
         <Tabs link="mektep" tabs={tabs} />
       </TabsFlex>
 
-      {/* <MektopBlock>
+      {/* <MektepBlock>
         <MektepHeader />
         <MektepFooter />
-      </MektopBlock> */}
+      </MektepBlock> */}
 
-      <MektopBlock>
+      <MektepBlock>
         <MektepT1 />
-      </MektopBlock>
+      </MektepBlock>
     </MainLayouts>
   );
 };
 
-const MektopBlock = styled.div`
+const MektepBlock = styled.div`
     width: 100%;
     background-color: white;
 

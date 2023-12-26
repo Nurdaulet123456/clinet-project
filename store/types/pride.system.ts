@@ -27,4 +27,5 @@ export const initaialStatePrideInfo: IPrideInfo = {
     os: [],
     classname: [],
     teachers: [],
+    news: []
 }

@@ -20,7 +20,7 @@ const Tabs: FC<IProps> = ({ tabs, link }) => {
   return (
     <>
       {tabs?.map((item) => (
-        <Link href={`/${link}/${item.id}`} key={item.id}>
+        <Link href={link ? `/${link}/${item.id}` : ""} key={item.id}>
           <IdBlock
             background={
               router?.asPath?.split("/")[2] === String(item.id) ? "white" : ""

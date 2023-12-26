@@ -17,28 +17,63 @@ import { useEffect } from "react";
 const MainPage = () => {
   const router = useRouter();
 
-  const dispatch = useAppDispatch()
-  const school = useTypedSelector(state => state.schoolInfo.school)
+  const dispatch = useAppDispatch();
+  const school = useTypedSelector((state) => state.schoolInfo.school);
+
+  const daysOfWeek = [
+    "Воскресенье",
+    "Понедельник",
+    "Вторник",
+    "Среда",
+    "Четверг",
+    "Пятница",
+    "Суббота",
+  ];
+  var months = [
+    "Январь",
+    "Февраль",
+    "Март",
+    "Апрель",
+    "Май",
+    "Июнь",
+    "Июль",
+    "Август",
+    "Сентябрь",
+    "Октябрь",
+    "Ноябрь",
+    "Декабрь",
+  ];
+  const currentDate = new Date();
+  const dayOfWeek = currentDate.getDay();
+  const currentDayOfMonth = currentDate.getDate();
+  var currentMonth = currentDate.getMonth();
 
   useEffect(() => {
     if (school) {
-      dispatch(getSchoolThunk())
+      dispatch(getSchoolThunk());
     }
-  }, [dispatch])
+  }, [dispatch]);
 
   return (
     <>
       <div className="container">
         <Sidebar />
-
+        <div className="main-kes">KESTESI.KZ</div>
         <div className="main">
           <div className="main_inner">
-            <div className="main-kes">KESTESI.KZ</div>
             <div className="main_inner-header" style={{ height: "auto" }}>
-              <div className="main_inner-block">17:30</div>
+              <div className="main_inner-block">
+                {new Date().getHours() < 10
+                  ? `0${new Date().getHours()}`
+                  : new Date().getHours()}
+                :
+                {new Date().getMinutes() < 10
+                  ? `0${new Date().getMinutes()}`
+                  : new Date().getMinutes()}
+              </div>
               <div className="main_inner-block" style={{ textAlign: "center" }}>
-                Понедельник <br />
-                20 ноября
+                {daysOfWeek[dayOfWeek]} <br />
+                {currentDayOfMonth} {months[currentMonth]}
               </div>
               <div
                 className="main_inner-block"
@@ -54,8 +89,10 @@ const MainPage = () => {
             </div>
 
             <div className="main_inner-school">
-              Средняя общеобразовательная школа №144 имени Сактапбергена
-              Альжикова
+              {
+                school?.find((item) => item.url === "my.kestesi.kz/155")
+                  ?.school_kz_name
+              }
             </div>
 
             <div className="main_inner-grid">

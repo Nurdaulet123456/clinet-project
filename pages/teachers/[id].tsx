@@ -1,6 +1,7 @@
 import MainLayouts from "@/layouts/MainLayouts";
 import styled from "@emotion/styled";
 import React from "react";
+import TeacherCard from "../../components/molecul/TeacherCard/TeacherCard";
 import TeacherSearch from "../../components/organ/TeacherSearch/TeacherSearch";
 
 const MenuPage = () => {
@@ -8,9 +9,12 @@ const MenuPage = () => {
     <MainLayouts>
       <div className="menu_title">Мұғалімдер</div>
 
-      <CardsContainer>
-        <TeacherSearch />
-      </CardsContainer>
+      <ContentWrapper>
+        <CardsContainer>
+          <TeacherSearch />
+        </CardsContainer>
+        <TeacherCard />
+      </ContentWrapper>
     </MainLayouts>
   );
 };
@@ -104,22 +108,23 @@ const prideCards = [
   },
 ];
 
-const TabsFlex = styled.div`
-  display: flex;
-
+const ContentWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1.7rem;
+  flex-wrap: nowrap;
+  width: 100%;
 `;
 
 const CardsContainer = styled.div`
   display: flex;
-  //justify-content: center;
   flex-wrap: wrap;
   gap: 1.7rem;
-  
+
   padding: 10px 10px 40px 10px;
-  
+
   background: white;
-  
+
   border-radius: 10px;
 `;
 

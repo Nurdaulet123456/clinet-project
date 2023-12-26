@@ -130,18 +130,5 @@ const prideCards = [
   },
 ];
 
-const TabsFlex = styled.div`
-  display: flex;
-
-  gap: 1.7rem;
-`;
-
-const CardsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.7rem;
-
-  margin-top: 2.4rem;
-`;
 
 export default MenuPage;

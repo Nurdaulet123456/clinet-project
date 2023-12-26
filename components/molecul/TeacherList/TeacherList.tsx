@@ -14,8 +14,7 @@ const TeacherList: FC<TeacherListProps> = ({
     <TeacherWrapper>
       {teachersList?.map((item) => (
         <TeacherItem>
-          {/*{item === "Косаев Улан Ерланович" ? <Link href={`/teacher/1`}>{item}</Link> : item}*/}
-          {item}
+          <Link href={`/teachers/1`}>{item}</Link>
         </TeacherItem>
       ))}
     </TeacherWrapper>
@@ -23,18 +22,18 @@ const TeacherList: FC<TeacherListProps> = ({
 };
 
 const TeacherWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 30px;
-  justify-content: space-between;
   padding: 0 30px;
   //align-items: center;
 `;
 const TeacherItem = styled.div`
   display: flex;
+  width: 400px;
   //justify-content: center;
   //align-items: center;
   color: #1376FF;
-  font-size: 24px;
+  font-size: 18px;
 `;
 export default TeacherList;

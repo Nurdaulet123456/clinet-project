@@ -100,7 +100,7 @@ const MainPage = () => {
                 <RasIcons />
                 Расписание
               </div>
-              <div>
+              <div onClick={() => router.push("/prides/1")}>
                 <GordSchoolIcons />
                 Гордость школы
               </div>
@@ -108,7 +108,7 @@ const MainPage = () => {
                 <MenuIcons />
                 Меню
               </div>
-              <div>
+              <div onClick={() => router.push("/mektep/1")}>
                 <SchoolIcons />О школе
               </div>
               <div>

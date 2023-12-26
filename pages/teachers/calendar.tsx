@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import React, { FC } from "react";
-import StudentCalendar from "../../components/organ/StudentCalendar";
 import TeacherCalendar from "../../components/organ/TeacherCalendar";
 import MainLayouts from "../../layouts/MainLayouts";
 
@@ -13,10 +12,10 @@ const Calendar: FC<CalendarProps> = ({
 }) => {
   return (
     <MainLayouts>
-      <div className="menu_title">Сабақ кестесі</div>
+      <div className="menu_title">Мұғалімдер</div>
 
       <CardsContainer>
-        <StudentCalendar />
+        <TeacherCalendar />
       </CardsContainer>
     </MainLayouts>
   );

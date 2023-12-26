@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 import React, { FC } from "react";
 
 const TeacherCard: FC = () => {
@@ -25,16 +26,18 @@ const TeacherCard: FC = () => {
         <Description>Университет - SDU университеті</Description>
         <Description>Деңгей - Бакалавр</Description>
         <Description>Мамандығы- қазақ тілі пән мұғалімі.</Description>
-      <Description>2016-2018 жылдары - Алматы қаласындағы №3 мектебінде мұғалім болып жұмыс атқарды.</Description>
-      {/* Repeat for other sections */}
-    </ContentBlock>
-  <ButtonContainer>
-    <Button>Сабақ кестесі</Button>
-    <Button>Резюме</Button>
-  </ButtonContainer>
-</CardWrapper>
-)
-  ;
+        <Description>2016-2018 жылдары - Алматы қаласындағы №3 мектебінде мұғалім болып жұмыс атқарды.</Description>
+        {/* Repeat for other sections */}
+      </ContentBlock>
+      <ButtonContainer>
+          <Button>
+            <Link href="/teachers/calendar">Сабақ кестесі</Link>
+          </Button>
+        <Button>Резюме</Button>
+      </ButtonContainer>
+    </CardWrapper>
+  )
+    ;
 };
 
 const ProfileBlock = styled.div`
@@ -108,7 +111,7 @@ const Button = styled.button`
   border: none;
   color: white;
   padding: 10px 20px;
-  
+
   border-radius: 5px;
   width: 100%;
   cursor: pointer;

@@ -51,6 +51,10 @@ const MektepFooterStyled = styled.div`
     border-radius: 20px;
   }
 
+  .mektep_footer-title {
+    font-size: 2.2rem;
+  }
+
   padding: 0 2.8rem;
 
   display: flex;
@@ -88,20 +92,19 @@ const MektepFooterStyled = styled.div`
 
   .mektep_footer-text,
   .mektep_footer-phone {
-    font-size: 1.6rem;
+    font-size: 2.2rem;
     color: #a098ae;
 
     @media (max-width: 1024px) {
-        font-size: 1.8rem;
+      font-size: 1.8rem;
     }
-
   }
   .mektep_footer-text {
-      @media (max-width: 1024px) {
-        margin-top: 1.8rem;
-      }
+    font-weight: 600;
+    @media (max-width: 1024px) {
+      margin-top: 1.8rem;
+    }
   }
-
 
   margin-bottom: 3rem;
 

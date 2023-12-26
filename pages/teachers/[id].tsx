@@ -129,15 +129,7 @@ const ContentWrapper = styled.div`
 `;
 
 const CardsContainer = styled.div`
-  // display: flex;
-  // flex-wrap: wrap;
-  // gap: 1.7rem;
-
-  // padding: 10px 10px 40px 10px;
-
-  // background: white;
-
-  // border-radius: 10px;
+  background-color: white;
 
 
   @media (max-width: 1024px) {

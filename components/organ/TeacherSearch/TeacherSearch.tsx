@@ -2,10 +2,12 @@ import styled from "@emotion/styled";
 import React, { useState } from "react";
 import SearchInput from "../../molecul/SearchInput/SearchInput";
 import TeacherList from "../../molecul/TeacherList/TeacherList";
+import Keyboard from "./Keyboard";
 
 
 const MenuPage = () => {
   const [value, setValue] = useState("");
+  
   const [teachers, setTeachers] = useState([
     "Косаев Улан Ерланович",
     "Данаев Алишер Алишерович",
@@ -18,25 +20,16 @@ const MenuPage = () => {
     "Хамзаева Айгерим Абдуллаевна",
     "Шакарим Айдана Габитовна",
   ]);
-  const [filteredTeachers, setFilteredTeachers] = useState(teachers);
 
-  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const inputValue = e.currentTarget.value;
-    setValue(inputValue);
-
-    const filtered = teachers.filter(item =>
-      item.toLowerCase().includes(inputValue.toLowerCase())
-    );
-    setFilteredTeachers(filtered);
-  };
   return (
     <>
       <SearchInput
         value={value}
-        onChange={onChange}
       />
-      {/* <div className="pride-card_breaker" /> */}
-      {/* <TeacherList teachersList={filteredTeachers}/> */}
+      <div className="pride-card_breaker" /> 
+      <TeacherList teachersList={teachers}/>
+
+      <Keyboard setInputText={setValue} inputText={value}/>
     </>
   );
 };

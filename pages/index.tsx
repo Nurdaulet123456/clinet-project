@@ -12,37 +12,18 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { getSchoolThunk } from "@/store/thunks/schoolInfo.thunk";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { clearInterval } from "timers";
 
 const MainPage = () => {
   const router = useRouter();
 
+  const [current, setCurrent] = useState<number>(0);
+
   const dispatch = useAppDispatch();
   const school = useTypedSelector((state) => state.schoolInfo.school);
+  const [lang, setLang] = useState<string>("kz");
 
-  const daysOfWeek = [
-    "Воскресенье",
-    "Понедельник",
-    "Вторник",
-    "Среда",
-    "Четверг",
-    "Пятница",
-    "Суббота",
-  ];
-  var months = [
-    "Январь",
-    "Февраль",
-    "Март",
-    "Апрель",
-    "Май",
-    "Июнь",
-    "Июль",
-    "Август",
-    "Сентябрь",
-    "Октябрь",
-    "Ноябрь",
-    "Декабрь",
-  ];
   const currentDate = new Date();
   const dayOfWeek = currentDate.getDay();
   const currentDayOfMonth = currentDate.getDate();
@@ -54,71 +35,147 @@ const MainPage = () => {
     }
   }, [dispatch]);
 
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setCurrent((prevCurrent) => {
+  //       if (prevCurrent === 12) {
+  //         return 0;
+  //       } else {
+  //         return prevCurrent + 1;
+  //       }
+  //     });
+  //   }, 500);
+
+  //   return () => {
+  //     clearInterval(intervalId);
+  //   };
+  // }, []);
+
   return (
     <>
-      <div className="container">
-        <Sidebar />
-        <div className="main-kes">KESTESI.KZ</div>
-        <div className="main">
-          <div className="main_inner">
-            <div className="main_inner-header" style={{ height: "auto" }}>
-              <div className="main_inner-block">
-                {new Date().getHours() < 10
-                  ? `0${new Date().getHours()}`
-                  : new Date().getHours()}
-                :
-                {new Date().getMinutes() < 10
-                  ? `0${new Date().getMinutes()}`
-                  : new Date().getMinutes()}
-              </div>
-              <div className="main_inner-block" style={{ textAlign: "center" }}>
-                {daysOfWeek[dayOfWeek]} <br />
-                {currentDayOfMonth} {months[currentMonth]}
+      <Sidebar lang={lang}/>
+      <div className="main-kes">KESTESI.KZ</div>
+      <div className="main">
+        <div className="main_inner">
+          <div className="main_inner-header" style={{ height: "auto" }}>
+            <div className="main_inner-block">
+              {new Date().getHours() < 10
+                ? `0${new Date().getHours()}`
+                : new Date().getHours()}
+              :
+              {new Date().getMinutes() < 10
+                ? `0${new Date().getMinutes()}`
+                : new Date().getMinutes()}
+            </div>
+            <div className="main_inner-block" style={{ textAlign: "center" }}>
+              {lang === "ru" && daysOfWeek[dayOfWeek]}{" "}
+              {lang === "kz" && daysOfWeekKZ[dayOfWeek]} <br />
+              {currentDayOfMonth} {lang === "ru" && months[currentMonth]}{" "}
+              {lang === "kz" && monthsKZ[currentMonth]}
+            </div>
+            <div
+              className="main_inner-block"
+              style={{ display: "flex", alignItems: "center", gap: "2rem" }}
+            >
+              25 С <GradusIcons />
+            </div>
+            <div className="main_inner-block lang">
+              <div
+                className={`${lang === "kz" ? "active" : ""}`}
+                onClick={() => setLang("kz")}
+              >
+                KZ
               </div>
               <div
-                className="main_inner-block"
-                style={{ display: "flex", alignItems: "center", gap: "2rem" }}
+                className={`${lang === "ru" ? "active" : ""}`}
+                onClick={() => setLang("ru")}
               >
-                25 С <GradusIcons />
+                RU
               </div>
-              <div className="main_inner-block lang">
-                <div>KZ</div>
-                <div>RU</div>
-                <div>EN</div>
+              <div
+                className={`${lang === "eng" ? "active" : ""}`}
+                onClick={() => setLang("eng")}
+              >
+                EN
               </div>
             </div>
+          </div>
 
-            <div className="main_inner-school">
-              {
-                school?.find((item) => item.url === "my.kestesi.kz/155")
-                  ?.school_kz_name
-              }
+          <div className="main_inner-school">
+            {lang === "kz" && "Маяковский атындағы орта мектебі"}
+            {lang === "ru" && "Средняя школа имени Маяковского"}
+            {lang === "eng" && "Mayakovsky Secondary School"}
+          </div>
+
+          <div className="main_inner-grid">
+            <div
+              style={{
+                backgroundColor: current === 2 ? "#5D6FC5" : "white",
+                color: current === 2 ? "white" : "#5D6FC5",
+                transition: "all .2s linear",
+              }}
+            >
+              <RasIcons />
+              {lang === "kz" && "Сабақ кестесі"}
+              {lang === "ru" && "Расписание"}
             </div>
-
-            <div className="main_inner-grid">
-              <div>
-                <RasIcons />
-                Расписание
-              </div>
-              <div onClick={() => router.push("/prides/1")}>
-                <GordSchoolIcons />
-                Гордость школы
-              </div>
-              <div onClick={() => router.push("/menu")}>
-                <MenuIcons />
-                Меню
-              </div>
-              <div onClick={() => router.push("/mektep/1")}>
-                <SchoolIcons />О школе
-              </div>
-              <div>
-                <PrepoIcons />
-                Преподаватели
-              </div>
-              <div>
-                <MapIcons />
-                Карта школы
-              </div>
+            <div
+              onClick={() => router.push("/prides/1")}
+              style={{
+                backgroundColor: current === 4 ? "#5D6FC5" : "white",
+                color: current === 4 ? "white" : "#5D6FC5",
+                transition: "all .2s linear",
+              }}
+            >
+              <GordSchoolIcons />
+              {lang === "kz" && "Мектеп мақтаныштары"}
+              {lang === "ru" && "Гордость школы"}
+            </div>
+            <div
+              onClick={() => router.push("/menu")}
+              style={{
+                backgroundColor: current === 6 ? "#5D6FC5" : "white",
+                color: current === 6 ? "white" : "#5D6FC5",
+                transition: "all .2s linear",
+              }}
+            >
+              <MenuIcons />
+              {lang === "kz" && "Ас мәзірі"}
+              {lang === "ru" && "Меню столовой"}
+            </div>
+            <div
+              onClick={() => router.push("/mektep/1")}
+              style={{
+                backgroundColor: current === 8 ? "#5D6FC5" : "white",
+                color: current === 8 ? "white" : "#5D6FC5",
+                transition: "all .2s linear",
+              }}
+            >
+              <SchoolIcons />
+              {lang === "kz" && "Мектеп туралы"}
+              {lang === "ru" && "О школе"}
+            </div>
+            <div
+              style={{
+                backgroundColor: current === 10 ? "#5D6FC5" : "white",
+                color: current === 10 ? "white" : "#5D6FC5",
+                transition: "all .2s linear",
+              }}
+            >
+              <PrepoIcons />
+              {lang === "kz" && "Мұғалімдер"}
+              {lang === "ru" && "Преподаватели"}
+            </div>
+            <div
+              style={{
+                backgroundColor: current === 12 ? "#5D6FC5" : "white",
+                color: current === 12 ? "white" : "#5D6FC5",
+                transition: "all .2s linear",
+              }}
+            >
+              <MapIcons />
+              {lang === "kz" && "Мектеп картасы"}
+              {lang === "ru" && "Карта школы"}
             </div>
           </div>
         </div>
@@ -126,5 +183,55 @@ const MainPage = () => {
     </>
   );
 };
+
+const daysOfWeek = [
+  "Воскресенье",
+  "Понедельник",
+  "Вторник",
+  "Среда",
+  "Четверг",
+  "Пятница",
+  "Суббота",
+];
+
+const daysOfWeekKZ = [
+  "Жексенбі",
+  "Дүйсенбі",
+  "Сәрсенбі",
+  "Сейсенбі",
+  "Бейсенбі",
+  "Жұма",
+  "Сенбі",
+];
+
+var months = [
+  "Январь",
+  "Февраль",
+  "Март",
+  "Апрель",
+  "Май",
+  "Июнь",
+  "Июль",
+  "Август",
+  "Сентябрь",
+  "Октябрь",
+  "Ноябрь",
+  "Декабрь",
+];
+
+var monthsKZ = [
+  "Қаңтар",
+  "Ақпан",
+  "Наурыз",
+  "Сәуір",
+  "Мамыр",
+  "Маусым",
+  "Шілде",
+  "Тамыз",
+  "Қыркүйек",
+  "Қазан",
+  "Қараша",
+  "Желтоқсан",
+];
 
 export default MainPage;

@@ -15,27 +15,52 @@ const MenuPage = () => {
     }
   }, [dispatch]);
 
+  const groupByWeekDay = (data: any) => {
+    const groupedData: any = {};
+
+    data.forEach((item: any) => {
+      const weekDay = item.week_day.toString();
+
+      if (!groupedData[weekDay]) {
+        groupedData[weekDay] = [];
+      }
+
+      groupedData[weekDay].push({
+        food_name: item.food_name,
+        food_reti: item.food_reti,
+        food_sostav: item.food_sostav,
+        vihod_1: item.vihod_1,
+        vihod_2: item.vihod_2,
+        vihod_3: item.vihod_3,
+      });
+    });
+
+    return groupedData;
+  };
+
+  const groupMenu = groupByWeekDay(menu);
+
   return (
     <MainLayouts>
       <div className="menu_title">Ас мәзірі</div>
 
       <div className="menu_blocks">
-        {menu &&
-          menu.map((item, index) => (
-            <div className="menu_block">
-              <div className="menu_block-title">
-                {getWeekRussianDayString(item?.week_day as string)}
-              </div>
-              <div className="menu_content">
-                <div className="one">{item.food_name}</div>
-                <div className="two">{item.food_sostav}</div>
+        {Object.keys(groupMenu).map((item, index) => (
+          <div className="menu_block" key={index + 1}>
+            <div className="menu_block-title">
+              {getWeekRussianDayString(item as string)}
+            </div>
+            {groupMenu[item].map((i: any, index: any) => (
+              <div className="menu_content" key={i.id}>
+                <div className="one">{i.food_name}</div>
+                <div className="two">{i.food_sostav}</div>
                 <div className="three">
-                  Выход: {item.vihod_1} гр / {item.vihod_2} гр / {item.vihod_3}{" "}
-                  гр
+                  Выход: {i.vihod_1} гр / {i.vihod_2} гр / {i.vihod_3} гр
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        ))}
       </div>
     </MainLayouts>
   );

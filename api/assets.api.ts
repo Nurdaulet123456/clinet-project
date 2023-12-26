@@ -1,5 +1,5 @@
 import { instance } from "./axios.instance";
-import { IKruzhok, IMenu, ICalls, IClassRoom, IClass, INews, ITeachers, ISchoolInfo, IClassName, IUsers, ISchoolAdmin, ISchoolPassport, ISchoolPhotos, ISchoolSocialMedia, ISchoolSport, ISchoolAltyn, ISchoolAtest, ISchoolOlimp, ISchoolOner, ILessons, IExtraLessons } from "@/types/assets.types";
+import { IKruzhok, IMenu, ICalls, ISchedule, IClassRoom, IClass, INews, ITeachers, ISchoolInfo, IClassName, IUsers, ISchoolAdmin, ISchoolPassport, ISchoolPhotos, ISchoolSocialMedia, ISchoolSport, ISchoolAltyn, ISchoolAtest, ISchoolOlimp, ISchoolOner, ILessons, IExtraLessons } from "@/types/assets.types";
 
 export const assetsApi = {
     async getKruzhok(): Promise<IKruzhok[]> {
@@ -97,4 +97,17 @@ export const assetsApi = {
     async getNews(): Promise<INews[]> {
         return await instance.get('/api/newsApi/')
     },
+
+    async getSchedule(): Promise<ISchedule[]> {
+        return await instance.get('/api/schedule/')
+    },
+
+    async getClasses(class_name?: string, osnova_smena?: string): Promise<IClass[]> {
+        return await instance.get('/api/class/', {
+            params: {
+                class_name,
+                osnova_smena
+            }
+        })
+    }
 }

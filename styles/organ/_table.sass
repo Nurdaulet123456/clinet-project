@@ -5,6 +5,18 @@
     width: 100%
     //flex-direction: row
 
+    &_pan
+        font-size: 1.4rem
+        margin: 0
+
+    &_less
+        color: #8D91A0
+        font-size: 1rem
+        margin-top: .6rem
+        margin-bottom: 1.7rem
+
+    
+
     &_row
         display: grid
         grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr
@@ -15,12 +27,14 @@
 
     &_cell
         font-weight: 700
-        border: 1px solid gray
+        border: 1px solid #AFAFAF
         border-radius: 6px
         &-neutral
-            background: url("../../public/table_cell-neutral.png")
-            background-size: 100%
-            background-position: center
+            background: url("../../public/table_cell-neutral.png") top -20px right no-repeat
+            background-size: cover
+
+            height: 80px
+
         &-header, &-side
             background: #317BE1
             color: white
@@ -33,6 +47,8 @@
             flex-direction: column
             align-items: center
             justify-content: center
+            height: 130px
+            
         &-content
             display: flex
             flex-direction: column
@@ -42,9 +58,10 @@
         &-active
             background: #317AE0
         &-inactive
-            background: #F2F2F2
+            background: #FFFFFF
         &-secondary
             background: #97BCEF
+            height: 126px
 
     &_number
         position: absolute
@@ -56,8 +73,8 @@
         font-size: 14px
     &_caption
         margin-top: 0
-        font-size: 12px
-        color: #9E9E9E
+        font-size: 14px
+        color: #0E75FF
     &_cabinet
         color: #0E75FF
         margin-bottom: 0
@@ -65,3 +82,13 @@
         color: #1B447A
     &_time, &_caption, &_grade
         margin: 0!important
+
+    &_no
+        display: flex
+        align-items: center
+        justify-content: center
+
+        &-title
+            color: #8D91A0
+            font-weight: bold
+            font-size: 1.4rem

@@ -60,3 +60,18 @@ export const getNewsThunk = createAsyncThunk(
     'getNewsThunk',
     async () => (await assetsApi.getNews())
 )
+
+export const getScheduleThunk = createAsyncThunk(
+    'getScheduleThunk',
+    async () => (await assetsApi.getSchedule())
+)
+
+interface IProps {
+    class_name?: string
+    osnova_smena?: string
+}
+
+export const getClassThunk = createAsyncThunk(
+    'getClassThunk',
+    async ({ class_name, osnova_smena }: IProps) => (await assetsApi.getClasses(class_name, osnova_smena))
+)

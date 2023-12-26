@@ -37,12 +37,12 @@ const PaginationItem = styled.div<{
   justify-content: center;
   align-items: center;
 
-  min-width: 50px;
-  height: 50px;
+  min-width: 80px;
+  height: 80px;
   padding: 20px;
 
   color: #1B447A;
-  font-size: ${(props) => (props?.itemNumber > 3 ? "16px" : "22px")};
+  font-size: ${(props) => (props?.itemNumber > 3 ? "20px" : "32px")};
   font-weight: 700;
 
   background: #ffffff;
@@ -52,10 +52,8 @@ const PaginationItem = styled.div<{
 
 const PaginationWrapper = styled.div`
   display: flex;
-  gap: 1.2rem;
+  gap: 1.8rem;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
 
   margin-bottom: 40px;
 `;

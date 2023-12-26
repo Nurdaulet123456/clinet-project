@@ -27,6 +27,7 @@ const MektepHeader = () => {
 };
 
 const MektepHeaderStyled = styled.div`
+    background: url(/icons/r1.svg) top 30px right 75px no-repeat, url(/icons/r2.svg) top 152px right 211px no-repeat;
     background-color: #5699F2;
     padding: 3.5rem 2.8rem;
     border-top-left-radius : 20px;
@@ -52,9 +53,9 @@ const MektepHeaderStyled = styled.div`
     }
     
     .meket_info-title {
-        font-size: 2.4rem;
+        font-size: 3.6rem;
         color: white;
-        font-weight: 700;
+        font-weight: 600;
 
         margin-bottom: 1rem;
 
@@ -65,7 +66,7 @@ const MektepHeaderStyled = styled.div`
 
     .meket_info-subtitle {
         color: white;
-        font-size: 1.8rem;
+        font-size: 2.4rem;
 
         margin-bottom: 1.2rem;
 
@@ -75,6 +76,7 @@ const MektepHeaderStyled = styled.div`
     }
     
     .mektep_address {
+        font-size: 1.8rem;
         div {
             display: flex;
             align-items: center;

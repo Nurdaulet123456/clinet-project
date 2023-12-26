@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 import React, { FC } from "react";
 
 interface SearchInputProps {
@@ -11,10 +12,10 @@ const SearchInput: FC<SearchInputProps> = ({
   value,
   onChange,
 }) => {
+
   return (
     <CustomInput
       value={value}
-      onChange={onChange}
       placeholder="Search..."
     />
   );

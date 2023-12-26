@@ -32,18 +32,27 @@ const NewsCards: FC<IProps> = ({ newsCards }) => {
         ?.map((item) => (
           <>
             <div className="pik"></div>
-            <div className="news-card">
-              <img
-                className="news-card_img img"
-                src={item?.photos![0]}
-                alt={item?.photos![0]}
-              />
-              <div className="news-card_content">
-                <span className="news-card_date">{item.date}</span>
-                <span className="news-card_title">{item.text}</span>
-                <Link href={`/news/${item.date}`} className="news-card_button">
-                  Әрі қарай
-                </Link>
+            <div className="news-cards">
+              <div className="news-card" key={item.id}>
+                <div className="news-card_img">
+                  <img
+                    className="img"
+                    src={item?.photos![0]}
+                    alt={item?.photos![0]}
+                  />
+                </div>
+                <div className="news-card_content">
+                  <div className="news-card_date">{item.date}</div>
+                  <div className="news-card_title">
+                    {item.text}sadadasdasdasdasdsdadsasdadasdasd
+                  </div>
+                  <Link
+                    href={`/news/${item.date}`}
+                    className="news-card_button"
+                  >
+                    Әрі қарай
+                  </Link>
+                </div>
               </div>
             </div>
           </>

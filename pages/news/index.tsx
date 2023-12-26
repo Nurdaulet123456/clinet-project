@@ -9,13 +9,12 @@ const MenuPage = () => {
       <div className="menu_title">Жаңалықтар</div>
 
       <ContentContainer>
-        <CardsFlex>
+        <CardsFlex className="news_block">
           <NewsCards newsCards={newsCards} />
         </CardsFlex>
-        <ImageBlock
-          src="/news-block.png"
-          alt="KZ flags"
-        />
+        <div className="news_block">
+          <ImageBlock src="/news-block.png" alt="KZ flags" />
+        </div>
       </ContentContainer>
     </MainLayouts>
   );
@@ -26,24 +25,26 @@ const newsCards = [
     id: 1,
     img: "/news.png",
     date: "09.12.2023",
-    title: "Республика күніне орай Қазақстан Республикасының Мемлекеттік Гимнін орындау челленджі.",
+    title:
+      "Республика күніне орай Қазақстан Республикасының Мемлекеттік Гимнін орындау челленджі.",
   },
   {
     id: 2,
     img: "/news.png",
     date: "09.12.2023",
-    title: "Республика күніне орай Қазақстан Республикасының Мемлекеттік Гимнін орындау челленджі.",
+    title:
+      "Республика күніне орай Қазақстан Республикасының Мемлекеттік Гимнін орындау челленджі.",
   },
   {
     id: 3,
     img: "/news.png",
     date: "09.12.2023",
-    title: "Республика күніне орай Қазақстан Республикасының Мемлекеттік Гимнін орындау челленджі.",
+    title:
+      "Республика күніне орай Қазақстан Республикасының Мемлекеттік Гимнін орындау челленджі.",
   },
 ];
 
 const ImageBlock = styled.img`
-  width: 350px;
   object-fit: cover;
   border-radius: 10px;
 
@@ -53,18 +54,18 @@ const ImageBlock = styled.img`
 `;
 
 const CardsFlex = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.7rem;
-
 `;
 
 const ContentContainer = styled.div`
   display: flex;
-  flex-direction: row;
   gap: 1.7rem;
+  align-items: flex-start;
 
   margin-top: 2.4rem;
+
+  .news_block {
+    width: 50%;
+  }
 
   @media (max-width: 1024px) {
     display: block;

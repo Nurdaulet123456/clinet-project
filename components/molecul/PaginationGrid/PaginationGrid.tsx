@@ -1,3 +1,4 @@
+import { IClass } from "@/types/assets.types";
 import styled from "@emotion/styled";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -9,7 +10,7 @@ interface IPagination {
 }
 
 interface IProps {
-  pagination?: any;
+  pagination?: IClass[];
 }
 
 const PaginationGrid: FC<IProps> = ({ pagination }) => {
@@ -17,20 +18,14 @@ const PaginationGrid: FC<IProps> = ({ pagination }) => {
 
   return (
     <PaginationWrapper>
-      {pagination[router?.asPath?.split("/")[2]]?.map((item: any) => (
-        <Link
-          href={`/schedule/calendar`}
-          key={item}
-        >
-          <PaginationItem>
-            {item}
-          </PaginationItem>
+      {pagination && pagination?.map((item) => (
+        <Link href={`/schedule/${item.class_name}/calendar`} key={item.id}>
+          <PaginationItem>{item.class_name}</PaginationItem>
         </Link>
       ))}
     </PaginationWrapper>
   );
 };
-
 
 const PaginationItem = styled.div<{
   itemNumber?: string | number;
@@ -39,12 +34,12 @@ const PaginationItem = styled.div<{
   justify-content: center;
   align-items: center;
 
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   padding: 20px;
 
-  color: #1B447A;
-  font-size: 18px;
+  color: #1b447a;
+  font-size: 24px;
   font-weight: 400;
 
   background: #ffffff;
@@ -53,10 +48,9 @@ const PaginationItem = styled.div<{
 `;
 
 const PaginationWrapper = styled.div`
-  //width: 50%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 3rem;
+  gap: 4rem;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;

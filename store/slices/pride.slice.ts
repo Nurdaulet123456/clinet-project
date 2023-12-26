@@ -2,11 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { initaialStatePrideInfo } from "../types/pride.system";
 import {
     getClassNameThunk,
+    getClassThunk,
     getDopThunk,
     getExtraThunk,
     getLessonsThunk,
     getNewsThunk,
     getOSThunk,
+    getScheduleThunk,
     getSchoolAltynThunk,
     getSchoolAtestThunk,
     getSchoolOlimpThunk,
@@ -16,10 +18,12 @@ import {
 } from "../thunks/pride.thunk";
 import {
     ICalls,
+    IClass,
     IClassName,
     IExtraLessons,
     ILessons,
     INews,
+    ISchedule,
     ISchoolAltyn,
     ISchoolAtest,
     ISchoolOlimp,
@@ -165,6 +169,28 @@ export const prideSlice = createSlice({
                         return {
                             ...state,
                             news: action.payload,
+                        };
+                    }
+                    return state;
+                }
+            ).addCase(
+                getScheduleThunk.fulfilled,
+                (state, action: PayloadAction<ISchedule[]>) => {
+                    if (action.payload) {
+                        return {
+                            ...state,
+                            schedule: action.payload,
+                        };
+                    }
+                    return state;
+                }
+            ).addCase(
+                getClassThunk.fulfilled,
+                (state, action: PayloadAction<IClass[]>) => {
+                    if (action.payload) {
+                        return {
+                            ...state,
+                            class: action.payload,
                         };
                     }
                     return state;

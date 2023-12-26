@@ -277,3 +277,54 @@ export interface IClass {
     dopurok_smena?: any
     school?: number
 }
+
+// Schedule 
+
+export interface ISchedule {
+    id?: number
+    week_day?: string
+
+    school?: number
+    teacher?: ITeacher
+    ring?: IRing
+    classl?: IClassl
+    subject?: ISubject
+    classroom?: IClassRooms
+    typez?: ITypeZ
+}
+
+interface ITeacher {
+    id?: number
+    full_name?: string
+}
+
+interface IRing {
+    id?: number
+    start_time?: string
+    end_time?: string
+}
+
+interface IClassl {
+    id?: number
+    class_name?: string
+    class_number?: string
+}
+
+interface ISubject {
+    id?: number
+    full_name?: string
+    type?: string
+}
+
+interface IClassRooms {
+    id?: number
+    classroom_name?: string
+    classroom_number?: number
+}
+
+interface ITypeZ {
+    id?: number
+    type_full_name?: string
+    type_color?: string
+    school?: number
+}

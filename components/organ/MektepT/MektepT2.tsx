@@ -33,11 +33,12 @@ const MektepT1Styled = styled.div`
 
   display: flex;
   flex-wrap: wrap;
-  gap: 2.6rem;
+  column-gap: 2.6rem;
+  row-gap: 3rem;
 
   .mektop-gal {
-    width: 150px;
-    height: 150px;
+    width: 170px;
+    height: 170px;
 
     border: 8px solid #ffffff;
     border-radius: 5px;

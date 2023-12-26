@@ -20,7 +20,8 @@ const MektepT1 = () => {
       <MektepT1Styled>
         <div className="mektept_info">
           <div>
-            <img className="img" src={sp?.photo} alt="" />
+            <img className="mektep-photo img" src={sp?.photo} alt="" />
+            <div className="established">{sp?.established} жылы құрылды</div>
           </div>
 
           <div className="mektept_info-content">
@@ -90,21 +91,25 @@ const MektepT1 = () => {
               Жалпы сынып-комплект {sp?.number_of_classes}
             </div>
 
-            <ul>
+            <ul className="zhs">
               <li>
-                даярлық сынып: {sp?.dayarlyk_class_number} сынып,{" "}
-                {sp?.dayarlyk_student_number} бала
+                даярлық сынып: <br />
+                {sp?.dayarlyk_class_number} сынып, {sp?.dayarlyk_student_number}{" "}
+                бала
               </li>
               <li>
-                1-4 сынып-комплекті: {sp?.number_of_1_4_classes} сынып,{" "}
-                {sp?.number_of_1_4_students} бала
+                1-4 сынып-комплекті: <br />
+                {sp?.number_of_1_4_classes} сынып, {sp?.number_of_1_4_students}{" "}
+                бала
               </li>
               <li>
-                5-9 сынып-комплекті: {sp?.number_of_5_9_classes} сынып,{" "}
-                {sp?.number_of_5_9_students} бала
+                5-9 сынып-комплекті: <br />
+                {sp?.number_of_5_9_classes} сынып, {sp?.number_of_5_9_students}{" "}
+                бала
               </li>
               <li>
-                10-11 сынып-комплекті: {sp?.number_of_10_11_classes} сынып,{" "}
+                10-11 сынып-комплекті: <br />
+                {sp?.number_of_10_11_classes} сынып,{" "}
                 {sp?.number_of_10_11_students} бала
               </li>
             </ul>
@@ -129,9 +134,7 @@ const MektepT1 = () => {
 
         <div className="mektep_h">
           <div className="mektept_info-content_title">Мектеп тарихы</div>
-          <p>
-            {sp?.school_history}
-          </p>
+          <p>{sp?.school_history}</p>
         </div>
       </MektepT1Styled>
     </>
@@ -147,23 +150,37 @@ const MektepT1Styled = styled.div`
     gap: 1.6rem;
 
     @media (max-width: 1024px) {
-        display:block;
+      display: block;
+    }
+  }
+
+  .mektep_h {
+    p{
+    font-size: 2.4rem;
+    color: #A098AE;
+    font-weight: 400;
     }
   }
 
   .mektept_info-content_title {
-    font-size: 1.8rem;
+    font-size: 2.4rem;
     font-weight: 700;
     color: #1b447a;
     margin-bottom: 1rem;
 
     @media (max-width: 1024px) {
-        margin-top: 2rem;
+      margin-top: 2rem;
     }
+  }
+
+  .mektep-photo {
+    width: 620px;
+    margin-right: 4.5rem;
   }
 
   .mektept_info-content_subtitle {
     color: #a098ae;
+    font-size: 2rem;
 
     margin-bottom: 2.4rem;
   }
@@ -172,21 +189,24 @@ const MektepT1Styled = styled.div`
     display: flex;
     flex-wrap: wrap;
 
-    gap: 2rem;
+    column-gap: 7.5rem;
+    row-gap: 2rem;
   }
 
   .mektep_info-content-t1 {
+    width: 100%;
+    max-width: 179px;
     div {
       &:nth-child(1) {
         color: #a098ae;
-
+        font-size: 2rem;
         margin-bottom: 2rem;
       }
 
       &:nth-child(2) {
         display: flex;
         align-items: center;
-
+        font-size: 2.4rem;
         gap: 1rem;
         color: #303972;
         font-weight: 700;
@@ -205,25 +225,38 @@ const MektepT1Styled = styled.div`
     margin-bottom: 2rem;
 
     @media (max-width: 1024px) {
-        display: block;
+      display: block;
     }
 
     ul {
+      width: 100%;
+      max-width: 370px;
       li {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 1.6rem;
         margin-bottom: 0.8rem;
+        font-size: 2.4rem;
+        color: #a098ae;
         &::before {
           content: "";
           display: block;
-          width: 8px;
-          height: 8px;
+          padding: 0.4rem;
           background-color: #a098ae;
           border-radius: 50%;
+          margin-top: 1.2rem;
         }
       }
     }
+  }
+
+  .established {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+
+    color: #a098ae;
+    margin-top: 1.8rem;
   }
 `;
 

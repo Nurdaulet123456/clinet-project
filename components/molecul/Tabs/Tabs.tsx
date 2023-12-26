@@ -64,11 +64,20 @@ const IdBlock = styled.div<{
   color: ${(props) => (props.color ? props.color : "#FFFFFF")};
   border-color: ${(props) => (props.border ? props.border : "#FFFFFF")};
 
+  width: auto;
+
   &:hover {
     background-color: white;
     color: #5699F2;
     border-color: white;
   }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    min-width: 225px;
+
+    text-align: center;
+}
 `;
 
 export default Tabs;

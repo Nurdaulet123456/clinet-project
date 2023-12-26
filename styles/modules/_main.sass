@@ -1,3 +1,18 @@
+@import '../_mixins'
+
+.main-kes
+    display: none
+    @include for-tablet-only
+        display: block
+
+        font-size: 3.2rem
+        text-transform: uppercase
+        color: #FFFFFF
+        font-weight: 700
+        text-align: center
+
+        margin-top: 6.4rem
+
 .main_inner-header
     display: flex
     align-items: center
@@ -9,11 +24,20 @@
 
     height: 100vh
 
+    @include for-tablet-only
+        display: none
+
 .main_inner-school
     font-size: 4rem
     font-weight: 700
     color: white
     margin-top: 5.5rem
+
+    @include for-tablet-only
+        text-align: center
+        font-size: 2.4rem
+
+        padding-inline: 1.4rem
 
 .main_inner-grid
     display: grid
@@ -22,6 +46,10 @@
     gap: 1.6rem
 
     margin-top: 10rem
+
+    @include for-tablet-only
+        display: block
+        margin-top: 10rem
 
     div
         background-color: white
@@ -41,4 +69,18 @@
         font-weight: 700
 
         cursor: pointer
+
+        @include for-tablet-only
+            padding-block: 1rem
+            border-radius: 10px
+
+            margin-inline: 1rem
+
+            margin-bottom: 1.4rem
+
+            font-size: 1.7rem
+            grid-template-columns: .6ch auto
+
+            svg
+                width: 22px
 

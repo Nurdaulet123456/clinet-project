@@ -6,7 +6,7 @@ const SidebarMain = () => {
 
   return (
     <div className="sidebar-block">
-      <div className="sidebar_t">KESTESI.KZ</div>
+      <Link href={'/'}><div className="sidebar_t">KESTESI.KZ</div></Link>
 
       <nav className="sidebar_links">
         {sidebar.map((item) => (

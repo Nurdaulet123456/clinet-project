@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { QRIcons } from "../atoms/Icons";
 
 const Sidebar = () => {
-
   return (
     <div className="sidebar sidebar-main">
       <div className="sidebar_top">KESTESI.KZ</div>
@@ -11,13 +10,15 @@ const Sidebar = () => {
 
       <nav className="sidebar_content">
         <div className="sidebar_img">
-            <img className="img" src="/side.jpg" alt="" />
+          <img className="img" src="/side.jpg" alt="" />
         </div>
 
-        <div className="sidebar_button">
+        <Link href={'/mektep/4'}>
+          <div className="sidebar_button">
             <QRIcons />
             Открыть с устройства
-        </div>
+          </div>
+        </Link>
       </nav>
     </div>
   );

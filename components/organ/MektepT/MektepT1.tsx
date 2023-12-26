@@ -1,12 +1,26 @@
+import { useAppDispatch } from "@/hooks/useAppDispatch";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
+import { getSchoolPassportThunk } from "@/store/thunks/schoolInfo.thunk";
 import styled from "@emotion/styled";
+import { useEffect } from "react";
 
 const MektepT1 = () => {
+  const dispatch = useAppDispatch();
+  const passport = useTypedSelector((state) => state.schoolInfo.schoolpassport);
+  const sp = passport?.find((item) => item.school === 1);
+
+  useEffect(() => {
+    if (passport) {
+      dispatch(getSchoolPassportThunk());
+    }
+  }, [dispatch]);
+
   return (
     <>
       <MektepT1Styled>
         <div className="mektept_info">
           <div>
-            <img className="img" src="/mt.jpg" alt="" />
+            <img className="img" src={sp?.photo} alt="" />
           </div>
 
           <div className="mektept_info-content">
@@ -14,8 +28,7 @@ const MektepT1 = () => {
               Маяковский атындағы орта мектебі
             </div>
             <div className="mektept_info-content_subtitle">
-              Мекен-жай: Абай облысы, Жарма ауданы, Қалбатау ауылы, Ақтамберді
-              жырау көшесі, 29 үй{" "}
+              Мекен-жай: {sp?.school_address}
             </div>
 
             <div className="mektept_info-content_title">
@@ -27,35 +40,35 @@ const MektepT1 = () => {
                 <div>Жалпы бала саны</div>
                 <div>
                   <img src="/icons/mt.svg" alt="" />
-                  812
+                  {sp?.number_of_students}
                 </div>
               </div>
               <div className="mektep_info-content-t1">
-                <div>Жалпы бала саны</div>
+                <div>Ұлдың саны</div>
                 <div>
                   <img src="/icons/mt.svg" alt="" />
-                  812
+                  {sp?.ul_sany}
                 </div>
               </div>
               <div className="mektep_info-content-t1">
-                <div>Жалпы бала саны</div>
+                <div>Қыздың саны</div>
                 <div>
                   <img src="/icons/mt.svg" alt="" />
-                  812
+                  {sp?.kiz_sany}
                 </div>
               </div>
               <div className="mektep_info-content-t1">
-                <div>Жалпы бала саны</div>
+                <div>Отбасы саны</div>
                 <div>
                   <img src="/icons/mt.svg" alt="" />
-                  812
+                  {sp?.amount_of_family}
                 </div>
               </div>
               <div className="mektep_info-content-t1">
-                <div>Жалпы бала саны</div>
+                <div>Ата-ана саны</div>
                 <div>
                   <img src="/icons/mt.svg" alt="" />
-                  812
+                  {sp?.amount_of_parents}
                 </div>
               </div>
             </div>
@@ -66,34 +79,50 @@ const MektepT1 = () => {
           <div>
             <div className="mektept_info-content_title">Мектеп төлқұжаты</div>
             <ul>
-              <li>Оқыту тілі - қазақ, орыс</li>
-              <li>Статусы - тірек мектеп</li>
-              <li>Сыйымдылығы - 314</li>
-              <li>Нақты оқитыны - 812</li>
+              <li>Оқыту тілі - {sp?.school_lang}</li>
+              <li>Статусы - {sp?.status}</li>
+              <li>Сыйымдылығы - {sp?.vmestimost}</li>
+              <li>Нақты оқитыны - {sp?.amount_of_children}</li>
             </ul>
           </div>
           <div>
             <div className="mektept_info-content_title">
-              Жалпы сынып-комплект 41
+              Жалпы сынып-комплект {sp?.number_of_classes}
             </div>
 
             <ul>
-              <li>Оқыту тілі - қазақ, орыс</li>
-              <li>Статусы - тірек мектеп</li>
-              <li>Сыйымдылығы - 314</li>
-              <li>Нақты оқитыны - 812</li>
+              <li>
+                даярлық сынып: {sp?.dayarlyk_class_number} сынып,{" "}
+                {sp?.dayarlyk_student_number} бала
+              </li>
+              <li>
+                1-4 сынып-комплекті: {sp?.number_of_1_4_classes} сынып,{" "}
+                {sp?.number_of_1_4_students} бала
+              </li>
+              <li>
+                5-9 сынып-комплекті: {sp?.number_of_5_9_classes} сынып,{" "}
+                {sp?.number_of_5_9_students} бала
+              </li>
+              <li>
+                10-11 сынып-комплекті: {sp?.number_of_10_11_classes} сынып,{" "}
+                {sp?.number_of_10_11_students} бала
+              </li>
             </ul>
           </div>
           <div>
             <div className="mektept_info-content_title">
-              Педагогтардың жалпы саны - 92
+              Педагогтардың жалпы саны - {sp?.all_pedagog_number}
             </div>
 
             <ul>
-              <li>Оқыту тілі - қазақ, орыс</li>
-              <li>Статусы - тірек мектеп</li>
-              <li>Сыйымдылығы - 314</li>
-              <li>Нақты оқитыны - 812</li>
+              <li>педагог шебер - {sp?.pedagog_sheber}</li>
+              <li>педагог-зерттеуші - {sp?.pedagog_zertteushy}</li>
+              <li>педагог-сарапшы - {sp?.pedagog_sarapshy}</li>
+              <li>педагог-модератор - {sp?.pedagog_moderator}</li>
+              <li>педагог-тағылымдамашы - {sp?.pedagog_stazher}</li>
+              <li>Жоғары - {sp?.pedagog_zhogary}</li>
+              <li>I санатты - {sp?.pedagog_1sanat}</li>
+              <li>II санатты - {sp?.pedagog_2sanat}</li>
             </ul>
           </div>
         </div>
@@ -101,21 +130,7 @@ const MektepT1 = () => {
         <div className="mektep_h">
           <div className="mektept_info-content_title">Мектеп тарихы</div>
           <p>
-            Қазіргі таңдағы білім ғылымның қарыштап дамуы көз ілестірмей келе
-            жатқан аса ауқымды процесс. Білім дамуының өзгерістері болашақ
-            ұрпақтың жеке тұлға болып қалыптасуына бағытталған. Өзге елдермен
-            иық тіресе алатын, бәсекеге қабілетті бола алатын мемлекет болу үшін
-            білімнің іргесін берік қалау керек. Бұл ретте өскелең ұрпаққа сапалы
-            білім, саналы тәрбие беруде өзіндік қолтаңбасын қалдырып келе жатқан
-            киелі мекеннің төрінен орын алған қасиетті қара шаңырақ №20
-            З.Шүкіров атындағы Бөген орта мектебі екенін айта кету керек. Тарихы
-            әріден бастау алатын білім ұясы – халықтың сан ғасырлар бойы жинаған
-            мәдениетін келешек ұрпаққа жеткізетін ұлттық тәлім - тәрбие
-            ошағы.Аталмыш мектеп 1919 жылы Бөгенде бастауыш мектеп болып ашылды.
-            Мектепті татар байы Темірхан Ярлыгаев өз қаржысымен ашты. Мектепке
-            және алғашқы оқушыларға да керек құрал- жабдықтарды Темірхан әкеліп
-            берді. Оның оқыған, сауатты баласы Атағұла (Атауолла) алғашқы оқу
-            жылындағы жалғыз мұғалім болды.
+            {sp?.school_history}
           </p>
         </div>
       </MektepT1Styled>
@@ -130,6 +145,10 @@ const MektepT1Styled = styled.div`
     display: flex;
 
     gap: 1.6rem;
+
+    @media (max-width: 1024px) {
+        display:block;
+    }
   }
 
   .mektept_info-content_title {
@@ -137,6 +156,10 @@ const MektepT1Styled = styled.div`
     font-weight: 700;
     color: #1b447a;
     margin-bottom: 1rem;
+
+    @media (max-width: 1024px) {
+        margin-top: 2rem;
+    }
   }
 
   .mektept_info-content_subtitle {
@@ -179,7 +202,11 @@ const MektepT1Styled = styled.div`
 
     margin-top: 3.2rem;
 
-    margin-bottom: 2rem;    
+    margin-bottom: 2rem;
+
+    @media (max-width: 1024px) {
+        display: block;
+    }
 
     ul {
       li {

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap")
+@import '../_mixins'
 
 html
     font-size: 62.35%
@@ -16,7 +17,7 @@ body
     height: 100dvh
 
 
-    background: white url(/main.jpg) center center no-repeat
+    background: white url(/main.jpg) center center
     background-size: cover
 
 *,
@@ -76,11 +77,23 @@ input, textarea
     top: 20px  
     padding-bottom: 3rem 
 
+    overflow: hidden
+
+    @include for-tablet-only
+        position: static
+        width: auto
+
 .main-block
     position: absolute
     width: calc(100% - 450px)
     right: 0
     top: 20px   
+
+
+    @include for-tablet-only
+        position: static
+        width: auto
+        overflow: hidden
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button

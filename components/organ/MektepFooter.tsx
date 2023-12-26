@@ -1,18 +1,43 @@
+import { useAppDispatch } from "@/hooks/useAppDispatch";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
+import { getSchoolAdminThunk } from "@/store/thunks/schoolInfo.thunk";
 import styled from "@emotion/styled";
+import { useEffect } from "react";
 
 const MektepFooter = () => {
+  const dispatch = useAppDispatch();
+  const admin = useTypedSelector((state) => state.schoolInfo.schooladmin);
+
+  useEffect(() => {
+    if (admin) {
+      dispatch(getSchoolAdminThunk());
+    }
+  }, [dispatch]);
+
+  console.log(admin);
   return (
     <>
-      <MektepFooterStyled>
-        <div className="mektep_footer-info">
-          <div className="mektep_footer-avatar"></div>
-          <div className="mektep_footer-title">Искакова Тлеукеш Талғарқызы</div>
-        </div>
-        <div className="mektep_footer-text">
-          Заместитель директора по учебной работе
-        </div>
-        <div className="mektep_footer-phone">+7 777 777 77 77</div>
-      </MektepFooterStyled>
+      <div style={{ paddingBlock: "1.6rem" }}>
+        {admin &&
+          admin.map((item, index) => (
+            <MektepFooterStyled key={item.id}>
+              <div className="mektep_footer-info">
+                <div className="mektep_footer-avatar">
+                  <img
+                    className="img"
+                    src={item.administator_photo}
+                    alt={item.administator_photo}
+                  />
+                </div>
+                <div className="mektep_footer-title">
+                  {item.administrator_name?.split(" ")[0]}
+                </div>
+              </div>
+              <div className="mektep_footer-text">{item.position}</div>
+              <div className="mektep_footer-phone">{item.phone_number}</div>
+            </MektepFooterStyled>
+          ))}
+      </div>
     </>
   );
 };
@@ -22,11 +47,19 @@ const MektepFooterStyled = styled.div`
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 
-  padding: 3.5rem 2.8rem;
+  @media (max-width: 1024px) {
+    border-radius: 20px;
+  }
+
+  padding: 0 2.8rem;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 1024px) {
+    display: block;
+  }
 
   .mektep_footer-info {
     display: flex;
@@ -44,15 +77,37 @@ const MektepFooterStyled = styled.div`
 
     border-radius: 50%;
     background-color: #5699f2;
+    img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      border-radius: 50%;
+    }
   }
 
   .mektep_footer-text,
   .mektep_footer-phone {
     font-size: 1.6rem;
     color: #a098ae;
+
+    @media (max-width: 1024px) {
+        font-size: 1.8rem;
+    }
+
+  }
+  .mektep_footer-text {
+      @media (max-width: 1024px) {
+        margin-top: 1.8rem;
+      }
   }
 
+
   margin-bottom: 3rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 export default MektepFooter;

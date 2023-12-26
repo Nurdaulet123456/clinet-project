@@ -36,11 +36,19 @@ const MektepHeaderStyled = styled.div`
     align-items : center;
     gap: 5rem;
 
+    @media (max-width: 1024px) {
+        display: block;
+    }
+
     .mektep_avatar {
         width: 200px;
         height: 200px;
         border: 8px solid #FFFFFF;
         border-radius: 50%;
+
+        @media (max-width: 1024px) {
+            margin-bottom: 1.2rem;
+        }
     }
     
     .meket_info-title {
@@ -49,6 +57,10 @@ const MektepHeaderStyled = styled.div`
         font-weight: 700;
 
         margin-bottom: 1rem;
+
+        @media (max-width: 1024px) {
+            font-size: 1.6rem;
+        }
     }
 
     .meket_info-subtitle {
@@ -56,6 +68,10 @@ const MektepHeaderStyled = styled.div`
         font-size: 1.8rem;
 
         margin-bottom: 1.2rem;
+
+        @media (max-width: 1024px) {
+            margin-bottom: 2.4rem;
+        }
     }
     
     .mektep_address {

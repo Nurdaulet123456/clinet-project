@@ -1,3 +1,5 @@
+@import '../_mixins'
+
 .sidebar-block, .sidebar-main, .sidebar
     position: fixed
     top: 30px
@@ -47,6 +49,9 @@
     left: 0
 
     width: 600px
+
+    @include for-tablet-only
+        display: none
 
     .sidebar_top
         font-size: 4rem
@@ -110,6 +115,9 @@
     width: 450px
 
     background-color: white
+
+    @include for-tablet-only
+        display: none
 
 .sidebar_t
     color: #1B447A

@@ -1,111 +1,51 @@
+import { useAppDispatch } from "@/hooks/useAppDispatch";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
 import MainLayouts from "@/layouts/MainLayouts";
+import { getKruzhokInfoThunk } from "@/store/thunks/schoolInfo.thunk";
+import { getWeekRussianDayString } from "@/utils/assets.utils";
+import { useEffect } from "react";
 
 const KruzhokPage = () => {
+  const dispatch = useAppDispatch();
+  const kruzhok = useTypedSelector((state) => state.schoolInfo.kruzhok);
+
+  useEffect(() => {
+    if (kruzhok) {
+      dispatch(getKruzhokInfoThunk());
+    }
+  }, [dispatch]);
+
+  console.log(kruzhok)
+
   return (
     <MainLayouts>
       <div className="menu_title">Үйірме</div>
 
       <div className="kruzhok_blocks">
-        <div className="kruzhok_block">
-          <div className="kruzhok_block-img">
-            <img className="img" src="/k.jpg" alt="" />
-          </div>
+        {kruzhok &&
+          kruzhok.map((item, index) => (
+            <div className="kruzhok_block">
+              <div className="kruzhok_block-img">
+                <img className="img" src={item.photo} alt={item.photo} />
+              </div>
 
-          <div className="kruzhok_block-content">
-            <div className="kruzhok_title">Арт-бояу курсы</div>
-            <div className="kruzhok_subtitle">Айгерім Біржанқызы</div>
-            <div className="kruzhok_text">
-              Мақсаты: Бейнелеу өнеріне деген қызығушылықты арттыру.
-              Шығармашылыққа баулу.
-            </div>
+              <div className="kruzhok_block-content">
+                <div className="kruzhok_title">{item.kruzhok_name}</div>
+                <div className="kruzhok_subtitle">{item.teacher.full_name}</div>
+                <div className="kruzhok_text">
+                  Мақсаты: {item.purpose}
+                </div>
 
-            <div className="kruzhok_time">
-              <p>Дүйсенбі: 14:30-15:20</p>
-              <p>Сәрсенбі: 12:20-13:20</p>
-              <p>Сенбі: 17:30-16:20</p>
+                <div className="kruzhok_time">
+                  {
+                    item.lessons?.map((i, inx) => (
+                        <p>{getWeekRussianDayString(i.week_day as string)}: {i?.start_end_time}</p>
+                    ))
+                  }
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="kruzhok_block">
-          <div className="kruzhok_block-img">
-            <img className="img" src="/k.jpg" alt="" />
-          </div>
-
-          <div className="kruzhok_block-content">
-            <div className="kruzhok_title">Арт-бояу курсы</div>
-            <div className="kruzhok_subtitle">Айгерім Біржанқызы</div>
-            <div className="kruzhok_text">
-              Мақсаты: Бейнелеу өнеріне деген қызығушылықты арттыру.
-              Шығармашылыққа баулу.
-            </div>
-
-            <div className="kruzhok_time">
-              <p>Дүйсенбі: 14:30-15:20</p>
-              <p>Сәрсенбі: 12:20-13:20</p>
-              <p>Сенбі: 17:30-16:20</p>
-            </div>
-          </div>
-        </div>
-        <div className="kruzhok_block">
-          <div className="kruzhok_block-img">
-            <img className="img" src="/k.jpg" alt="" />
-          </div>
-
-          <div className="kruzhok_block-content">
-            <div className="kruzhok_title">Арт-бояу курсы</div>
-            <div className="kruzhok_subtitle">Айгерім Біржанқызы</div>
-            <div className="kruzhok_text">
-              Мақсаты: Бейнелеу өнеріне деген қызығушылықты арттыру.
-              Шығармашылыққа баулу.
-            </div>
-
-            <div className="kruzhok_time">
-              <p>Дүйсенбі: 14:30-15:20</p>
-              <p>Сәрсенбі: 12:20-13:20</p>
-              <p>Сенбі: 17:30-16:20</p>
-            </div>
-          </div>
-        </div>
-        <div className="kruzhok_block">
-          <div className="kruzhok_block-img">
-            <img className="img" src="/k.jpg" alt="" />
-          </div>
-
-          <div className="kruzhok_block-content">
-            <div className="kruzhok_title">Арт-бояу курсы</div>
-            <div className="kruzhok_subtitle">Айгерім Біржанқызы</div>
-            <div className="kruzhok_text">
-              Мақсаты: Бейнелеу өнеріне деген қызығушылықты арттыру.
-              Шығармашылыққа баулу.
-            </div>
-
-            <div className="kruzhok_time">
-              <p>Дүйсенбі: 14:30-15:20</p>
-              <p>Сәрсенбі: 12:20-13:20</p>
-              <p>Сенбі: 17:30-16:20</p>
-            </div>
-          </div>
-        </div>
-        <div className="kruzhok_block">
-          <div className="kruzhok_block-img">
-            <img className="img" src="/k.jpg" alt="" />
-          </div>
-
-          <div className="kruzhok_block-content">
-            <div className="kruzhok_title">Арт-бояу курсы</div>
-            <div className="kruzhok_subtitle">Айгерім Біржанқызы</div>
-            <div className="kruzhok_text">
-              Мақсаты: Бейнелеу өнеріне деген қызығушылықты арттыру.
-              Шығармашылыққа баулу.
-            </div>
-
-            <div className="kruzhok_time">
-              <p>Дүйсенбі: 14:30-15:20</p>
-              <p>Сәрсенбі: 12:20-13:20</p>
-              <p>Сенбі: 17:30-16:20</p>
-            </div>
-          </div>
-        </div>
+          ))}
       </div>
     </MainLayouts>
   );

@@ -9,7 +9,7 @@ interface IPagination {
 }
 
 interface IProps {
-  pagination?: IPagination[];
+  pagination?: any;
 }
 
 const PaginationGrid: FC<IProps> = ({ pagination }) => {

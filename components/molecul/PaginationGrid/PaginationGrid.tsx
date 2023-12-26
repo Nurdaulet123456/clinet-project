@@ -17,7 +17,7 @@ const PaginationGrid: FC<IProps> = ({ pagination }) => {
 
   return (
     <PaginationWrapper>
-      {pagination[router?.asPath?.split("/")[2]]?.map((item) => (
+      {pagination[router?.asPath?.split("/")[2]]?.map((item: any) => (
         <Link
           href={`/schedule/calendar`}
           key={item}

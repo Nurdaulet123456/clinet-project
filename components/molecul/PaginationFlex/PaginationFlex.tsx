@@ -31,7 +31,7 @@ const PaginationFlex: FC<IProps> = ({ pagination }) => {
 };
 
 const PaginationItem = styled.div<{
-  itemNumber?: string | number;
+  itemNumber?: any;
 }>`
   display: flex;
   justify-content: center;
@@ -42,7 +42,7 @@ const PaginationItem = styled.div<{
   padding: 20px;
 
   color: #1B447A;
-  font-size: ${(props) => (props.itemNumber > 3 ? "16px" : "22px")};
+  font-size: ${(props) => (props?.itemNumber > 3 ? "16px" : "22px")};
   font-weight: 700;
 
   background: #ffffff;

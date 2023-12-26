@@ -1,11 +1,17 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { FC } from "react";
 
-const SidebarMain = () => {
+interface IProps {
+    open?: boolean
+    setOpen?: any
+}
+
+const SidebarMain: FC<IProps> = ({open, setOpen}) => {
   const router = useRouter();
 
   return (
-    <div className="sidebar-block">
+    <div className={`sidebar-block ${open ? 'active': ""}`}>
       <Link href={"/"}>
         <div className="sidebar_t">KESTESI.KZ</div>
       </Link>
@@ -15,6 +21,7 @@ const SidebarMain = () => {
           <Link
             href={`/${item.link}`}
             key={item.id}
+            onClick={() => setOpen(false)}
             className={`${
               router.asPath.split("/")[1] === item.link?.split("/")[0]
                 ? "active"
@@ -28,6 +35,10 @@ const SidebarMain = () => {
           </Link>
         ))}
       </nav>
+
+      <div className="close" onClick={() => setOpen(false)}>
+        <img src="/icons/close.svg" alt="" />
+      </div>
     </div>
   );
 };

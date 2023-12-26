@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { QRIcons } from "../atoms/Icons";
 import { FC, useRef } from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 interface IProps {
   lang?: string;
 }
@@ -20,9 +20,13 @@ const Sidebar: FC<IProps> = ({ lang }) => {
 
       <nav className="sidebar_content">
         <Swiper
-          modules={[Navigation]}
+          modules={[Navigation, Autoplay]}
           slidesPerView={1}
           pagination={{ clickable: true }}
+          autoplay={{
+            delay: 15000,
+            disableOnInteraction: false,
+          }}
           style={{ width: "530px" }}
           breakpoints={{
             700: {
@@ -41,24 +45,40 @@ const Sidebar: FC<IProps> = ({ lang }) => {
           <SwiperSlide>
             <div className="sidebar_img" style={{ width: "480px" }}>
               <img className="img" src="/side.jpg" alt="" />
+
+              <div className="sidebar_img-text">
+                Каждый человек должен с самого детства заботиться о....
+              </div>
             </div>
           </SwiperSlide>
 
           <SwiperSlide>
             <div className="sidebar_img" style={{ width: "480px" }}>
-              <img className="img" src="/side.jpg" alt="" />
+              <img className="img" src="/side2.jpg" alt="" />
+              <div className="sidebar_img-text">
+                25 желтоқсан күні мектебімізде Ата-аналарды педагогикалық қолдау
+                орталығының....
+              </div>
             </div>
           </SwiperSlide>
 
           <SwiperSlide>
             <div className="sidebar_img" style={{ width: "480px" }}>
-              <img className="img" src="/side.jpg" alt="" />
+              <img className="img" src="/side3.jpg" alt="" />
+              <div className="sidebar_img-text">
+                25 желтоқсан күні мектебімізде Ата-аналарды педагогикалық қолдау
+                орталығының....
+              </div>
             </div>
           </SwiperSlide>
 
           <SwiperSlide>
             <div className="sidebar_img" style={{ width: "480px" }}>
-              <img className="img" src="/side.jpg" alt="" />
+              <img className="img" src="/side4.jpg" alt="" />
+              <div className="sidebar_img-text">
+                25 желтоқсан күні мектебімізде Ата-аналарды педагогикалық қолдау
+                орталығының....
+              </div>
             </div>
           </SwiperSlide>
           <ArrowButtonPrev />

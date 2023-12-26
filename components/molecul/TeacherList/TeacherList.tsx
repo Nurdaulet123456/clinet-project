@@ -30,7 +30,8 @@ const TeacherWrapper = styled.div`
 `;
 const TeacherItem = styled.div`
   display: flex;
-  width: 400px;
+  justify-content: space-between;
+  width: 320px;
   //justify-content: center;
   //align-items: center;
   color: #1376FF;

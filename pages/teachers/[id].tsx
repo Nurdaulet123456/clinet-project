@@ -119,7 +119,7 @@ const PaddingInline = styled.div`
 const ContentWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.7rem;
+  gap: 3rem;
   flex-wrap: nowrap;
   width: 100%;
 
@@ -130,8 +130,9 @@ const ContentWrapper = styled.div`
 
 const CardsContainer = styled.div`
   background-color: white;
-
-
+  width: 796px;
+  border-radius: 10px;
+  padding-top: 10px;
   @media (max-width: 1024px) {
     margin-bottom: 2rem;
   }

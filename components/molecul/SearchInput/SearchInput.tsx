@@ -27,6 +27,7 @@ const CustomInput = styled.input`
   align-items: center;
 
   background-color: white;
+
   
   width: 100%;
   height: 60px;

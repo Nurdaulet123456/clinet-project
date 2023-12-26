@@ -171,7 +171,7 @@ const Keyboard: React.FC<IProps> = ({setInputText, inputText}) => {
               "қ",
               "ө",
               "һ",
-              '<',
+              '<i className="fa-solid fa-delete-left"></i>'
             ].map((keyvalue, index) => (
               <Key
                 key={index}

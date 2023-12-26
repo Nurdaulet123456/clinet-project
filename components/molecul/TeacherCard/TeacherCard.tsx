@@ -1,44 +1,52 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 
 const TeacherCard: FC = () => {
+  const [content, setContent] = useState<boolean>(false);
+
   return (
     <CardWrapper>
-      <ProfileBlock>
-        <ProfileImage src="/teacher.png" alt="Profile" />
-        <ProfileContent>
-          <Name>КОСАЕВ УЛАН ЕРЛАНОВИЧ</Name>
-          <Qualification>БИЛІКТІЛІК САНАТЫ-ПЕДАГОГ</Qualification>
-        </ProfileContent>
-      </ProfileBlock>
+      <div>
+        <ProfileBlock>
+          <ProfileImage src="/teacher.png" alt="Profile" />
+          <ProfileContent>
+            <Name>КОСАЕВ УЛАН ЕРЛАНОВИЧ</Name>
+            <Qualification>БИЛІКТІЛІК САНАТЫ-ПЕДАГОГ</Qualification>
+          </ProfileContent>
+        </ProfileBlock>
+        <Info style={{ padding: "0 16px" }}>ЛАУАЗЫМЫ-ДЕНЕ ОРЫС ТІЛІ ЖӘНЕ ӘДЕБИЕТІ ПӘНІ МҰҒАЛІМІ</Info>
+      </div>
       <ContentBlock>
-        <Info>ЛАУАЗЫМЫ-ДЕНЕ ОРЫС ТІЛІ ЖӘНЕ ӘДЕБИЕТІ ПӘНІ МҰҒАЛІМІ</Info>
-        <Subtitle>Жұмыс тәжірбиесі...</Subtitle>
-        <Description>
-          2012-2016 жылдары - Алатау ауданының мектебінде зерттеуші мұғалім
-          болып жұмыс атқарды.
-        </Description>
-        <Description>
-          2016-2018 жылдары - Алматы қаласындағы №3 мектебінде мұғалім болып
-          жұмыс атқарды.
-        </Description>
-        <Subtitle>Мамандығы</Subtitle>
-        <Description>Бітірген жылы - 2008 жылы</Description>
-        <Description>Университет - SDU университеті</Description>
-        <Description>Деңгей - Бакалавр</Description>
-        <Description>Мамандығы- қазақ тілі пән мұғалімі.</Description>
-        <Description>
-          2016-2018 жылдары - Алматы қаласындағы №3 мектебінде мұғалім болып
-          жұмыс атқарды.
-        </Description>
+        {content && (
+          <>
+            <Subtitle>Жұмыс тәжірбиесі</Subtitle>
+            <Description>
+              2012-2016 жылдары - Алатау ауданының мектебінде зерттеуші мұғалім
+              болып жұмыс атқарды.
+            </Description>
+            <Description>
+              2016-2018 жылдары - Алматы қаласындағы №3 мектебінде мұғалім болып
+              жұмыс атқарды.
+            </Description>
+            <Subtitle style={{ marginTop: "1.7rem" }}>Мамандығы</Subtitle>
+            <Description>Бітірген жылы - 2008 жылы</Description>
+            <Description>Университет - SDU университеті</Description>
+            <Description>Деңгей - Бакалавр</Description>
+            <Description>Мамандығы- қазақ тілі пән мұғалімі.</Description>
+            <Description>
+              2016-2018 жылдары - Алматы қаласындағы №3 мектебінде мұғалім болып
+              жұмыс атқарды.
+            </Description>
+          </>
+        )}
         {/* Repeat for other sections */}
       </ContentBlock>
       <ButtonContainer>
         <Button>
           <Link href="/teachers/calendar">Сабақ кестесі</Link>
         </Button>
-        <Button>Резюме</Button>
+        <Button onClick={() => setContent(!content)}>Резюме</Button>
       </ButtonContainer>
     </CardWrapper>
   );
@@ -61,7 +69,13 @@ const CardWrapper = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   width: 100%;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 522px;
+  height: 906px;
+  font-family: "Inter", sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   @media (max-width: 1024px) {
     background-color: transparent;
@@ -83,6 +97,7 @@ const ContentBlock = styled.div`
 
 const Name = styled.h1`
   font-size: 24px;
+  font-family: "Inter", sans-serif;
   color: #e94e29;
   margin: 0;
 
@@ -98,6 +113,8 @@ const Qualification = styled.p`
   margin-top: 4px;
   margin-bottom: 16px;
 
+  font-family: "Inter", sans-serif;
+
   @media (max-width: 1024px) {
     color: white;
     font-size: 16px;
@@ -105,27 +122,30 @@ const Qualification = styled.p`
 `;
 
 const Info = styled.p`
-  font-size: 16px;
-  color: #233255;
-  font-weight: 700;
+  font-size: 20px;
+  color: #233255b2;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
   margin-bottom: 16px;
   @media (max-width: 1024px) {
     color: white;
   }
 `;
 const Subtitle = styled.p`
-  font-size: 16px;
+  font-size: 20px;
+  font-family: "Inter", sans-serif;
   color: #e94e29;
-  font-weight: 700;
+  font-weight: 600;
   @media (max-width: 1024px) {
     color: white;
   }
 `;
 const Description = styled.p`
-  font-size: 16px;
-  color: #233255;
-  font-weight: 700;
-  margin-bottom: 16px;
+  font-size: 20px;
+  font-family: "Inter", sans-serif;
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 10px;
   padding-left: 10px;
   @media (max-width: 1024px) {
     color: white;
@@ -138,6 +158,8 @@ const ButtonContainer = styled.div`
   gap: 1rem;
   justify-content: center;
   margin: 40px 16px 5px;
+
+  margin-top: 20rem;:
 
   @media (max-width: 1024px) {
     button {

@@ -1,6 +1,7 @@
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { getScheduleThunk } from "@/store/thunks/pride.thunk";
+import { formatName } from "@/utils/assets.utils";
 import { useRouter } from "next/router";
 import React, { FC, useEffect } from "react";
 
@@ -84,7 +85,7 @@ const StudentCalendar: FC<StudentCalendarProps> = (
                 <p className="table_caption">
                   {lesson?.classroom?.classroom_number}
                 </p>
-                <p className="table_grade">{lesson?.teacher?.full_name}</p>
+                <p className="table_grade">{formatName(lesson?.teacher?.full_name as string)}</p>
               </div>
             ) : (
               <div

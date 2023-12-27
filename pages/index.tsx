@@ -67,10 +67,12 @@ const MainPage = () => {
                 : new Date().getMinutes()}
             </div>
             <div className="main_inner-block" style={{ textAlign: "center" }}>
-              {lang === "ru" && daysOfWeek[dayOfWeek]}{" "}
-              {lang === "kz" && daysOfWeekKZ[dayOfWeek]} <br />
-              {currentDayOfMonth} {lang === "ru" && months[currentMonth]}{" "}
+              {lang === "ru" && daysOfWeek[dayOfWeek]}
+              {lang === "kz" && daysOfWeekKZ[dayOfWeek]} {(lang === "kz" || lang === "ru") && <br />}
+              {lang === "eng" && daysOfWeekEng[dayOfWeek]}{lang === "eng" && <br />} 
+              {currentDayOfMonth} {lang === "ru" && months[currentMonth]}
               {lang === "kz" && monthsKZ[currentMonth]}
+              {lang === "eng" && monthsEng[currentMonth]}
             </div>
             <div
               className="main_inner-block"
@@ -118,6 +120,7 @@ const MainPage = () => {
               <RasIcons />
               {lang === "kz" && "Сабақ кестесі"}
               {lang === "ru" && "Расписание"}
+              {lang === "eng" && "Schedule"}
             </div>
             <div
               onClick={() => router.push("/prides/1")}
@@ -130,6 +133,7 @@ const MainPage = () => {
               <GordSchoolIcons />
               {lang === "kz" && "Мектеп мақтаныштары"}
               {lang === "ru" && "Гордость школы"}
+              {lang === "eng" && "Pride of the school"}
             </div>
             <div
               onClick={() => router.push("/menu")}
@@ -142,6 +146,7 @@ const MainPage = () => {
               <MenuIcons />
               {lang === "kz" && "Ас мәзірі"}
               {lang === "ru" && "Меню столовой"}
+              {lang === "eng" && "Dining room menu"}
             </div>
             <div
               onClick={() => router.push("/mektep/1")}
@@ -154,6 +159,7 @@ const MainPage = () => {
               <SchoolIcons />
               {lang === "kz" && "Мектеп туралы"}
               {lang === "ru" && "О школе"}
+              {lang === "eng" && "About the school"}
             </div>
             <div
               style={{
@@ -166,6 +172,7 @@ const MainPage = () => {
               <PrepoIcons />
               {lang === "kz" && "Мұғалімдер"}
               {lang === "ru" && "Преподаватели"}
+              {lang === "eng" && "Teachers"}
             </div>
             <div
               style={{
@@ -177,6 +184,7 @@ const MainPage = () => {
               <MapIcons />
               {lang === "kz" && "Мектеп картасы"}
               {lang === "ru" && "Карта школы"}
+              {lang === "eng" && "School Map"}
             </div>
           </div>
         </div>
@@ -233,6 +241,31 @@ var monthsKZ = [
   "Қазан",
   "Қараша",
   "Желтоқсан",
+];
+
+var monthsEng = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const daysOfWeekEng = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
 ];
 
 export default MainPage;

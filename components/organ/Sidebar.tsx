@@ -16,6 +16,7 @@ const Sidebar: FC<IProps> = ({ lang }) => {
       <div className="sidebar_top">KESTESI.KZ</div>
       <div className="sidebar_subtitle">
         {lang === "ru" && "Новости"} {lang === "kz" && "Жаңалықтар"}
+        {lang === "eng" && "News"} 
       </div>
 
       <nav className="sidebar_content">
@@ -89,6 +90,7 @@ const Sidebar: FC<IProps> = ({ lang }) => {
           <div className="sidebar_button">
             <QRIcons />
             {lang === "ru" && "Открыть с устройства"}{" "}
+            {lang === "eng" && "Open from a device"}{" "}
             {lang === "kz" && "Телефоннан ашу мүмкіндігі"}
           </div>
         </Link>

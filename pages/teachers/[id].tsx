@@ -133,8 +133,14 @@ const CardsContainer = styled.div`
   width: 796px;
   border-radius: 10px;
   padding-top: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   @media (max-width: 1024px) {
     margin-bottom: 2rem;
+    display: block;
   }
 `;
 

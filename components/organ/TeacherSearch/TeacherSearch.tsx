@@ -4,10 +4,9 @@ import SearchInput from "../../molecul/SearchInput/SearchInput";
 import TeacherList from "../../molecul/TeacherList/TeacherList";
 import Keyboard from "./Keyboard";
 
-
 const MenuPage = () => {
   const [value, setValue] = useState("");
-  
+
   const [teachers, setTeachers] = useState([
     "Косаев Улан Ерланович",
     "Данаев Алишер Алишерович",
@@ -23,13 +22,13 @@ const MenuPage = () => {
 
   return (
     <>
-      <SearchInput
-        value={value}
-      />
-      <div className="pride-card_breaker" /> 
-      <TeacherList teachersList={teachers}/>
+      <div>
+        <SearchInput value={value} />
+        <div className="pride-card_breaker" />
+        <TeacherList teachersList={teachers} />
+      </div>
 
-      <Keyboard setInputText={setValue} inputText={value}/>
+      <Keyboard setInputText={setValue} inputText={value} />
     </>
   );
 };
@@ -122,6 +121,5 @@ const prideCards = [
     grade: "9 сынып оқушысы",
   },
 ];
-
 
 export default MenuPage;

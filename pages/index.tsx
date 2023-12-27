@@ -35,25 +35,25 @@ const MainPage = () => {
     }
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setCurrent((prevCurrent) => {
-  //       if (prevCurrent === 12) {
-  //         return 0;
-  //       } else {
-  //         return prevCurrent + 1;
-  //       }
-  //     });
-  //   }, 500);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrent((prevCurrent) => {
+        if (prevCurrent === 12) {
+          return 0;
+        } else {
+          return prevCurrent + 1;
+        }
+      });
+    }, 500);
 
-  //   return () => {
-  //     clearInterval(intervalId);
-  //   };
-  // }, []);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   return (
     <>
-      <Sidebar lang={lang}/>
+      <Sidebar lang={lang} />
       <div className="main-kes">KESTESI.KZ</div>
       <div className="main">
         <div className="main_inner">
@@ -109,6 +109,7 @@ const MainPage = () => {
 
           <div className="main_inner-grid">
             <div
+              onClick={() => router.push("/schedule/1")}
               style={{
                 backgroundColor: current === 2 ? "#5D6FC5" : "white",
                 color: current === 2 ? "white" : "#5D6FC5",
@@ -161,6 +162,7 @@ const MainPage = () => {
                 color: current === 10 ? "white" : "#5D6FC5",
                 transition: "all .2s linear",
               }}
+              onClick={() => router.push("/teachers")}
             >
               <PrepoIcons />
               {lang === "kz" && "Мұғалімдер"}

@@ -13,7 +13,6 @@ import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { getSchoolThunk } from "@/store/thunks/schoolInfo.thunk";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { clearInterval } from "timers";
 
 const MainPage = () => {
   const router = useRouter();
